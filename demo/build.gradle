@@ -1,4 +1,38 @@
-//add everything here
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.epam'
+            artifactId 'gradleProject'
+            version '1.0-SNAPSHOT'
+
+            from components.java
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.apache.commons:lang3:3.14.0'
+}
+
+jar {
+    manifest {
+            attributes 'Implementation-Title': 'My Utils Library'
+            attributes 'Implementation-Version': '1.3.5'
+    }
+}
 
 test {
     useJUnitPlatform()

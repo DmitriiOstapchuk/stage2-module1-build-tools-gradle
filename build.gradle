@@ -1,5 +1,26 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.epam'
+            artifactId 'gradleProject'
+            version '1.0-SNAPSHOT'
+
+            from components.java
+        }
+    }
 }
 
 subprojects {
